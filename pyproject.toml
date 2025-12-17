@@ -1,0 +1,17 @@
+[project]
+name = "routescan"
+version = "0.1.0"
+description = "Simple multi-language route scanner with configurable regex rules."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "pyyaml",
+  "anthropic",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.8,<0.9.9"]
+build-backend = "uv_build"
+
+[project.scripts]
+routescan = "routescan.main:main"

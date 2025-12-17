@@ -1,0 +1,51 @@
+patterns:
+  - name: python_flask_fastapi_route
+    extensions: [".py"]
+    regex: "@\\w+\\.(route|(get|post|put|delete|patch|head))\\s*\\(\\s*(['\"])(?P<path>/.*?)\\3"
+    endpoint_group: "path"
+
+  - name: python_django_path
+    extensions: [".py"]
+    regex: "\\b(path|re_path)\\s*\\(\\s*(['\"])(?P<path>.*?)\\2"
+    endpoint_group: "path"
+
+  - name: js_express_route
+    extensions: [".js", ".ts", ".jsx", ".tsx"]
+    regex: "\\b(app|router|route)\\.(get|post|put|delete|patch|use|all)\\s*\\(\\s*(['\"])(?P<path>/.*?)\\3"
+    endpoint_group: "path"
+
+  - name: js_nestjs_decorator
+    extensions: [".ts"]
+    regex: "@(Get|Post|Put|Delete|Patch|Options|Head|All)\\s*\\(\\s*(['\"])(?P<path>.*?)\\2"
+    endpoint_group: "path"
+
+  - name: java_spring_mapping
+    extensions: [".java", ".kt"]
+    regex: "@(RequestMapping|(Get|Post|Put|Delete|Patch)Mapping)\\s*\\(\\s*(?:(?:value|path)\\s*=\\s*)?(['\"])(?P<path>.*?)\\3"
+    endpoint_group: "path"
+
+  - name: ruby_rails_route
+    extensions: [".rb"]
+    regex: "\\b(get|post|put|patch|delete)\\s+(['\"])(?P<path>/.*?)\\2"
+    endpoint_group: "path"
+
+  - name: go_routing_comprehensive
+    extensions: [".go"]
+    regex: "\\.(GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD|Handle|HandleFunc)\\s*\\(\\s*[`'\"](?P<path>/.*?)[`'\"]"
+    endpoint_group: "path"
+
+  - name: php_laravel_symfony
+    extensions: [".php"]
+    regex: "(Route::(get|post|put|delete|patch|match)|Route\\s*\\(\\s*(['\"])(?P<path>/.*?)\\3)"
+    endpoint_group: "path"
+    flags: ["IGNORECASE"]
+
+  - name: csharp_dotnet_route
+    extensions: [".cs"]
+    regex: "\\[(HttpGet|HttpPost|HttpPut|HttpDelete|HttpPatch|Route)\\s*\\(\\s*\\s*(['\"])(?P<path>.*?)\\2"
+    endpoint_group: "path"
+
+  - name: rust_actix_rocket_route
+    extensions: [".rs"]
+    regex: "#\\[\\s*(get|post|put|delete|patch|head|options|route)\\s*\\(\\s*(['\"])(?P<path>.*?)\\2"
+    endpoint_group: "path"
