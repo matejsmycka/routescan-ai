@@ -3,8 +3,8 @@ import re
 import logging
 from pathlib import Path
 
-from src.routescan.ai_models import RouteFlow, SecurityIssue
-from src.routescan.claude_client import ClaudeClient
+from routescan.ai_models import RouteFlow, SecurityIssue
+from routescan.claude_client import ClaudeClient
 
 log = logging.getLogger(__name__)
 

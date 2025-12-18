@@ -5,8 +5,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import List, Any, Dict
 
-from src.routescan.ai_models import RouteFlow, SecurityIssue
-from src.routescan.claude_client import ClaudeClient
+from routescan.ai_models import RouteFlow, SecurityIssue
+from routescan.claude_client import ClaudeClient
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -45,18 +45,18 @@ def analyze_single_flow(
     """
     route = flow.route
     file_path = Path(route.file)
-    
+
     # Read code safely
     try:
         # Limit file size read to ~50KB to prevent context window overflow
         # You can adjust this limit based on your specific Claude model context size
-        code = file_path.read_text(encoding="utf-8", errors="ignore")[:50000] 
+        code = file_path.read_text(encoding="utf-8", errors="ignore")[:50000]
     except OSError:
         logger.warning(f"Could not read file: {file_path}")
         code = "[File not found or unreadable]"
 
     prompt = _enhanced_security_prompt(flow, code)
-    
+
     # Increased max_tokens to allow for detailed analysis in the JSON
     raw_response = client.complete(prompt, max_tokens=2048)
     data = extract_json_from_response(raw_response)
@@ -87,7 +87,7 @@ def review_security(
     # Use ThreadPoolExecutor to parallelize LLM calls
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         future_to_flow = {
-            executor.submit(analyze_single_flow, client, flow, root): flow 
+            executor.submit(analyze_single_flow, client, flow, root): flow
             for flow in flows
         }
 

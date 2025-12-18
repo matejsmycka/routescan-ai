@@ -3,8 +3,8 @@ import os
 from collections.abc import Iterable
 from pathlib import Path
 
-from src.routescan.models import Route
-from src.routescan.rules_loader import load_patterns_from_yaml
+from routescan.models import Route
+from routescan.rules_loader import load_patterns_from_yaml
 
 log = logging.getLogger(__name__)
 

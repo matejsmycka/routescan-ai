@@ -3,12 +3,12 @@ import json
 import logging
 from pathlib import Path
 
-from src.routescan.agent_flows import build_route_flows
-from src.routescan.agent_inputs import build_endpoint_inputs
-from src.routescan.agent_refine import refine_security_analysis
-from src.routescan.agent_security import review_security
-from src.routescan.claude_client import ClaudeClient
-from src.routescan.core import scan_directory
+from routescan.agent_flows import build_route_flows
+from routescan.agent_inputs import build_endpoint_inputs
+from routescan.agent_refine import refine_security_analysis
+from routescan.agent_security import review_security
+from routescan.claude_client import ClaudeClient
+from routescan.core import scan_directory
 
 log = logging.getLogger(__name__)
 

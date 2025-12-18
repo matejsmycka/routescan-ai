@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from src.routescan.models import Route
+from routescan.models import Route
 
 
 @dataclass

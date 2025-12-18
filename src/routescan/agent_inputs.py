@@ -5,9 +5,9 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Optional
 
-from src.routescan.ai_models import EndpointInput
-from src.routescan.claude_client import ClaudeClient
-from src.routescan.models import Route
+from routescan.ai_models import EndpointInput
+from routescan.claude_client import ClaudeClient
+from routescan.models import Route
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -52,7 +52,7 @@ def analyze_route_worker(
         return None
 
     prompt = _enhanced_endpoint_prompt(route, code)
-    
+
     # max_tokens increased slightly to allow for richer source summaries
     raw_response = client.complete(prompt, max_tokens=1024)
     data = extract_json_clean(raw_response)

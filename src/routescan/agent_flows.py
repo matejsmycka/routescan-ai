@@ -1,8 +1,8 @@
 import json
 from pathlib import Path
 
-from src.routescan.ai_models import EndpointInput, RouteFlow
-from src.routescan.claude_client import ClaudeClient
+from routescan.ai_models import EndpointInput, RouteFlow
+from routescan.claude_client import ClaudeClient
 
 
 def build_route_flows(

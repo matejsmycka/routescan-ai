@@ -1,7 +1,7 @@
 from pathlib import Path
 import re
 
-from src.routescan.models import RoutePattern
+from routescan.models import RoutePattern
 
 
 def load_patterns_from_yaml(config_path: Path) -> dict[str, list[RoutePattern]]:
